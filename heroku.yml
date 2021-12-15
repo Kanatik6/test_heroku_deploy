@@ -3,12 +3,5 @@ build:
     web: Dockerfile
 run:
   web: gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
-services:
-  app:
-    build:
-      context: .
 release:
   image: web 
-  command: 
-    - manage.py makemigrations
-    - manage.py migrate
