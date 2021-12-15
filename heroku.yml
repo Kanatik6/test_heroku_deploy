@@ -7,3 +7,20 @@ release:
   image: web 
   command: 
     - python manage.py migrate
+
+
+redis:
+  container_name: redis_container
+  image: redis
+
+celery: 
+  build:
+    context: .
+  container_name: celery-worker
+  restart: always
+  command: sh -c "celery -A selery_test worker -B -l INFO"
+  volumes:
+    - .:/app
+  depends_on:
+    - redis
+    - app
