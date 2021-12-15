@@ -8,19 +8,20 @@ release:
   command: 
     - python manage.py migrate
 
+services:
 
-redis:
-  container_name: redis_container
-  image: redis
+  redis:
+    container_name: redis_container
+    image: redis
 
-celery: 
-  build:
-    context: .
-  container_name: celery-worker
-  restart: always
-  command: sh -c "celery -A selery_test worker -B -l INFO"
-  volumes:
-    - .:/app
-  depends_on:
-    - redis
-    - app
+  celery: 
+    build:
+      context: .
+    container_name: celery-worker
+    restart: always
+    command: sh -c "celery -A selery_test worker -B -l INFO"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - app
