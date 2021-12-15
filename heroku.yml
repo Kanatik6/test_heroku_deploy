@@ -2,7 +2,6 @@ build:
   docker:
     web: Dockerfile
   redis:
-    container_name: redis_container
     image: redis
 
   celery: 
