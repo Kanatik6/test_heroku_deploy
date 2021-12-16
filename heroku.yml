@@ -1,12 +1,12 @@
 build:
   docker:
     web: Dockerfile
-run:
-  web: gunicorn test_heroku.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web 
   command: 
     - python manage.py migrate
     - redis-server --port 16581
     - sh -c "celery -A test_heroku worker -B -l INFO"
+run:
+  web: gunicorn test_heroku.wsgi:application --bind 0.0.0.0:$PORT
 
