@@ -2,9 +2,9 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'selery_test.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'test_heroku.settings')
 
-app = Celery('selery_test')
+app = Celery('test_heroku')
 
 # app.conf.update(timezone = 'Asia/Bishkek')
 
