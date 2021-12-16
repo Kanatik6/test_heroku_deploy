@@ -1,25 +1,13 @@
 build:
   docker:
     web: Dockerfile
-    redis:
-      image: redis
 
-    celery: 
-      build:
-        context: .
-      container_name: celery-worker
-      restart: always
-      command: sh -c "celery -A selery_test worker -B -l INFO"
-      volumes:
-        - .:/app
-      depends_on:
-        - redis
-        - app
 run:
   web: gunicorn test_heroku.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web 
   command: 
     - python manage.py migrate
-
+    - redis-server
+    - celery -A selery_test worker -B -l INFO
 
