@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     
     # apps 
     'celery_tasks',
+    
+    # packeges
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
