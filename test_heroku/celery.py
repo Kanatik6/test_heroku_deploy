@@ -18,7 +18,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
     "check_celery": {
-        "task": "main_app.tasks.test_funk",
+        "task": "celery_test.tasks.test_funk",
         "schedule": crontab()
     },
 }
