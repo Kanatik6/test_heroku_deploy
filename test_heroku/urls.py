@@ -21,7 +21,7 @@ def okay(request):
     return HttpResponse('pretend-binary-data-here', content_type='image/jpeg')
 
 urlpatterns = [
-    path('favicon.ico', okay),
+    path('favicon.ico/', okay),
     path('admin/', admin.site.urls),
-    path('',include('celery_tasks.urls'))
+    path('celery/',include('celery_tasks.urls'))
 ]
