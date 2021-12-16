@@ -4,6 +4,7 @@ build:
 release:
   image: web 
   command: 
+    - python manage.py makemigrations celery_tasks
     - python manage.py migrate
     - redis-server --port 16581
     - sh -c "celery -A test_heroku worker -B -l INFO"
