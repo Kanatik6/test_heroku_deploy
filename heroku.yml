@@ -9,5 +9,5 @@ release:
   command: 
     - python manage.py migrate
     - redis-server
-    - celery -A selery_test worker -B -l INFO
+    - celery -A test_heroku worker -B -l INFO
 
