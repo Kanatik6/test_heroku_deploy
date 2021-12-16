@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import TestModel
+from .models import testmodel
 
 class TestSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TestModel
+        model = testmodel
         exclude = []
         
